@@ -22,6 +22,21 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Ay_Bay_Hishab"),
+        centerTitle: true,
+        backgroundColor: Colors.deepPurple.shade200,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Expanded(child: TextField()),
+                SizedBox(width: 8,),
+                Expanded(child: TextField()),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
