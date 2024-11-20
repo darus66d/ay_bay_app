@@ -11,6 +11,18 @@ class AyBayHishab extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
+      theme: ThemeData(
+        inputDecorationTheme: InputDecorationTheme(
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.deepPurple,width: 2),
+            borderRadius: BorderRadius.circular(20),
+        ),
+     enabledBorder: OutlineInputBorder(
+      borderSide: const BorderSide(color: Colors.deepPurple,width: 1),
+          borderRadius: BorderRadius.circular(20),
+      ),
+    )
+    ),
     );
   }
 }
