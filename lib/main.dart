@@ -39,6 +39,15 @@ class _HomeScreenState extends State<HomeScreen> {
   final bayTEController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  List<AyBayModel> ayBayList = [
+    AyBayModel(ay: "ay", bay: "bay"),
+    AyBayModel(ay: "ay", bay: "bay"),
+    AyBayModel(ay: "ay", bay: "bay"),
+    AyBayModel(ay: "ay", bay: "bay"),
+    AyBayModel(ay: "ay", bay: "bay"),
+    AyBayModel(ay: "ay", bay: "bay"),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,6 +103,37 @@ class _HomeScreenState extends State<HomeScreen> {
                   CategoryWidget(title: 'More', color: Colors.brown,),
                 ],
               ),
+              Card(
+                color: Colors.deepPurple.shade200,
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  primary: false,
+                  itemCount: ayBayList.length,
+                    itemBuilder: (context,index){
+                    return SizedBox(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(ayBayList[index].ay),
+                            Text(ayBayList[index].ay),
+                            Text(ayBayList[index].ay),
+                          ],
+                        ),
+                      ),
+                    );
+                    },
+                    separatorBuilder: (context,index){
+                    return SizedBox(height: 10,);
+                    },
+                   ),
+              )
             ],
           ),
         ),
@@ -102,5 +142,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
+class AyBayModel{
+   final String ay,bay;
+
+  AyBayModel({required this.ay, required this.bay});
+
+
+}
 
 
