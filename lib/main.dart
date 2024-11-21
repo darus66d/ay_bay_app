@@ -66,6 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   children: [
                     Expanded(child: TextFormField(
+                      keyboardType: TextInputType.number,
                       controller: ayTEController,
                       decoration: InputDecoration(
                         labelText: "Ay",
@@ -74,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     )),
                     SizedBox(width: 8,),
                     Expanded(child: TextFormField(
+                      keyboardType: TextInputType.number,
                       controller: bayTEController,
                       decoration: InputDecoration(
                         labelText: "Bay",
@@ -92,7 +94,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       backgroundColor: Colors.deepPurple,
                       foregroundColor: Colors.white,
                     ),
-                      onPressed: (){}, child: Text("Add"))),
+                      onPressed: (){
+                      ayBayList.add(AyBayModel(ay: ayTEController.text.trim(), bay: bayTEController.text.trim()));
+                     ayTEController.clear();
+                     bayTEController.clear();
+                      setState(() {
+
+                      });
+                      }, child: Text("Add"))),
               const SizedBox(height: 10,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -102,6 +111,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   CategoryWidget(title: 'Bay', color: Colors.deepOrangeAccent,),
                   CategoryWidget(title: 'More', color: Colors.brown,),
                 ],
+              ),
+              SizedBox(
+                height: 10,
               ),
               Card(
                 color: Colors.deepPurple.shade200,
@@ -117,13 +129,33 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder: (context,index){
                     return SizedBox(
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.symmetric(vertical: 16,horizontal: 8),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Text(ayBayList[index].ay),
-                            Text(ayBayList[index].ay),
-                            Text(ayBayList[index].ay),
+                            SizedBox(width: 10,),
+                            SizedBox(
+                              width: 70,
+                                child: Text(ayBayList[index].ay,style: TextStyle(fontSize: 18,fontWeight: FontWeight.w700),maxLines: 1,overflow: TextOverflow.ellipsis)),
+                            SizedBox(width: 10,),
+                            SizedBox(
+                              height: 30,
+                                width: 100,
+                                child: Card(child: Center(child: Text(ayBayList[index].ay)))),
+                            SizedBox(width: 10,),
+                            SizedBox(
+                                width: 70,
+                                child: Text(ayBayList[index].bay,style: TextStyle(fontSize: 18,fontWeight: FontWeight.w700),maxLines: 1,overflow: TextOverflow.ellipsis)),
+                            SizedBox(width: 10,),
+                            Spacer(),
+                            InkWell(
+                              onTap: (){
+                                ayBayList.remove(ayBayList[index]);
+                                setState(() {
+
+                                });
+                              },
+                                child: Icon(Icons.delete)),
+                            SizedBox(width: 10,),
                           ],
                         ),
                       ),
