@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Ay Bay Hishab"),
+        title: const Text("Ay Bay Hishab"),
         centerTitle: true,
         backgroundColor: Colors.deepPurple.shade200,
       ),
@@ -70,16 +70,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(child: TextFormField(
                       keyboardType: TextInputType.number,
                       controller: ayTEController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: "Ay",
                         isDense: true,
                       ),
                     )),
-                    SizedBox(width: 8,),
+                    const SizedBox(width: 8,),
                     Expanded(child: TextFormField(
                       keyboardType: TextInputType.number,
                       controller: bayTEController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: "Bay",
                         isDense: true,
                       ),
@@ -103,9 +103,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       setState(() {
 
                       });
-                      }, child: Text("Add"))),
+                      }, child: const Text("Add"))),
               const SizedBox(height: 10,),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   CategoryWidget(title: 'Ay', color: Colors.green,),
@@ -114,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   CategoryWidget(title: 'More', color: Colors.brown,),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Card(
@@ -134,37 +134,36 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: const EdgeInsets.symmetric(vertical: 16,horizontal: 8),
                         child: Row(
                           children: [
-                            SizedBox(width: 10,),
+                            const SizedBox(width: 10,),
                             SizedBox(
                               width: 70,
-                                child: Text(ayBayList[index].ay,style: TextStyle(fontSize: 18,fontWeight: FontWeight.w700),maxLines: 1,overflow: TextOverflow.ellipsis)),
-                            SizedBox(width: 10,),
+                                child: Text(ayBayList[index].ay,style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w700),maxLines: 1,overflow: TextOverflow.ellipsis)),
+                            const SizedBox(width: 50,),
                             SizedBox(
                               height: 30,
                                 width: 100,
                                 child: Card(child: Center(child: Text(time.toString())))),
-                            SizedBox(width: 10,),
+                            const SizedBox(width: 50,),
                             SizedBox(
                                 width: 70,
-                                child: Text(ayBayList[index].bay,style: TextStyle(fontSize: 18,fontWeight: FontWeight.w700),maxLines: 1,overflow: TextOverflow.ellipsis)),
-                            SizedBox(width: 10,),
-                            Spacer(),
+                                child: Text(ayBayList[index].bay,style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w700),maxLines: 1,overflow: TextOverflow.ellipsis)),
+                            const SizedBox(width: 10,),
+                            const Spacer(),
                             InkWell(
                               onTap: (){
                                 ayBayList.remove(ayBayList[index]);
                                 setState(() {
-
                                 });
                               },
-                                child: Icon(Icons.delete)),
-                            SizedBox(width: 10,),
+                                child: const Icon(Icons.delete)),
+                            const SizedBox(width: 10,),
                           ],
                         ),
                       ),
                     );
                     },
                     separatorBuilder: (context,index){
-                    return SizedBox(height: 10,);
+                    return const SizedBox(height: 10,);
                     },
                    ),
               )
@@ -178,7 +177,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
 class AyBayModel{
    final String ay,bay;
-
   AyBayModel({required this.ay, required this.bay});
 
 
