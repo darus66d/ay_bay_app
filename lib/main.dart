@@ -48,6 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
     AyBayModel(ay: "ay", bay: "bay"),
   ];
 
+  DateTime time = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -140,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(
                               height: 30,
                                 width: 100,
-                                child: Card(child: Center(child: Text(ayBayList[index].ay)))),
+                                child: Card(child: Center(child: Text(time.toString())))),
                             SizedBox(width: 10,),
                             SizedBox(
                                 width: 70,
