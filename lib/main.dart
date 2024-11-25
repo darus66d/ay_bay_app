@@ -39,14 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final bayTEController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  List<AyBayModel> ayBayList = [
-    AyBayModel(ay: "ay", bay: "bay"),
-    AyBayModel(ay: "ay", bay: "bay"),
-    AyBayModel(ay: "ay", bay: "bay"),
-    AyBayModel(ay: "ay", bay: "bay"),
-    AyBayModel(ay: "ay", bay: "bay"),
-    AyBayModel(ay: "ay", bay: "bay"),
-  ];
+  List<AyBayModel> ayBayList = [];
 
   DateTime time = DateTime.now();
 
@@ -97,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       foregroundColor: Colors.white,
                     ),
                       onPressed: (){
-                      ayBayList.add(AyBayModel(ay: ayTEController.text.trim(), bay: bayTEController.text.trim()));
+                      ayBayList.add(AyBayModel(ay: ayTEController.text.trim(), bay: bayTEController.text.trim(), date: time.toString()));
                      ayTEController.clear();
                      bayTEController.clear();
                       setState(() {
@@ -142,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(
                               height: 30,
                                 width: 100,
-                                child: Card(child: Center(child: Text(time.toString())))),
+                                child: Card(child: Center(child: Text(ayBayList[index].date)))),
                             const SizedBox(width: 50,),
                             SizedBox(
                                 width: 70,
@@ -176,8 +169,8 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class AyBayModel{
-   final String ay,bay;
-  AyBayModel({required this.ay, required this.bay});
+   final String ay,bay,date;
+  AyBayModel({required this.date, required this.ay, required this.bay});
 
 
 }
