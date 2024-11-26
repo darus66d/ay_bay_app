@@ -1,9 +1,15 @@
 import 'package:ay_bay_app/categorywidget.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(const AyBayHishab());
 }
+  /*List <int> number = [10,20,30,50,60];
+  for(int value in number){
+    print(value);
+  }*/
+
 class AyBayHishab extends StatelessWidget {
   const AyBayHishab({super.key});
 
@@ -43,8 +49,31 @@ class _HomeScreenState extends State<HomeScreen> {
 
   DateTime time = DateTime.now();
 
+  int calculateAySum (List<AyBayModel>ayBayList){
+    int aySum = 0;
+    for (AyBayModel A in ayBayList){
+      aySum+= int.parse(A.ay);
+      setState(() {});
+    }
+    return aySum;
+  }
+  int calculateBaySum (List<AyBayModel>ayBayList){
+    int baySum = 0;
+    for (AyBayModel A in ayBayList){
+      baySum+= int.parse(A.bay);
+      setState(() {});
+    }
+    return baySum;
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    int result = calculateAySum(ayBayList);
+
+    int result1 = calculateBaySum(ayBayList);
+
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Ay Bay Hishab"),
@@ -90,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       foregroundColor: Colors.white,
                     ),
                       onPressed: (){
-                      ayBayList.add(AyBayModel(ay: ayTEController.text.trim(), bay: bayTEController.text.trim(), date: time.toString()));
+                      ayBayList.add(AyBayModel(ay: ayTEController.text.trim(), bay: bayTEController.text.trim(), date: DateFormat("yMd").format(time)));
                      ayTEController.clear();
                      bayTEController.clear();
                       setState(() {
@@ -135,7 +164,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(
                               height: 30,
                                 width: 100,
-                                child: Card(child: Center(child: Text(ayBayList[index].date)))),
+                                child: Card(
+                                  margin: EdgeInsets.zero,
+                                    child: Center(child: Text(ayBayList[index].date)))),
                             const SizedBox(width: 50,),
                             SizedBox(
                                 width: 70,
@@ -164,6 +195,17 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          FloatingActionButton.extended(onPressed: (){},label: Text("Total Ay: $result"),),
+          SizedBox(width: 10,),
+          FloatingActionButton.extended(onPressed: (){},label: Text("Total Bay: $result1"),),
+          SizedBox(width: 10,),
+          FloatingActionButton.extended(onPressed: (){},label: Text("You have:  ${result - result1}"),),
+        ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
