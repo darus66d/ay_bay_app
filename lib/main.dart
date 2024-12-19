@@ -130,10 +130,10 @@ class _HomeScreenState extends State<HomeScreen> {
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  CategoryWidget(title: 'Ay', color: Colors.green,),
-                  CategoryWidget(title: 'Date', color: Colors.blue,),
-                  CategoryWidget(title: 'Bay', color: Colors.deepOrangeAccent,),
-                  CategoryWidget(title: 'More', color: Colors.brown,),
+                  CategoryWidget(title:'Ay', color: Colors.green,),
+                  CategoryWidget(title:'Date', color: Colors.blue,),
+                  CategoryWidget(title:'Bay', color: Colors.deepOrangeAccent,),
+                  SizedBox(width:70,child: CategoryWidget(title:'More', color: Colors.brown,)),
                 ],
               ),
               const SizedBox(
