@@ -126,9 +126,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
                       });
                       }, child: const Text("Add"))),
-              const SizedBox(height: 10,),
+              const SizedBox(height: 5,),
               const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CategoryWidget(title: 'Ay', color: Colors.green,),
                   CategoryWidget(title: 'Date', color: Colors.blue,),
@@ -158,12 +158,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             const SizedBox(width: 10,),
                             SizedBox(
-                              width: 70,
+                              width: 30,
                                 child: Text(ayBayList[index].ay,style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w700),maxLines: 1,overflow: TextOverflow.ellipsis)),
                             const SizedBox(width: 50,),
                             SizedBox(
                               height: 30,
-                                width: 100,
+                                width: 70,
                                 child: Card(
                                   margin: EdgeInsets.zero,
                                     child: Center(child: Text(ayBayList[index].date)))),
